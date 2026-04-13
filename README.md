@@ -37,10 +37,30 @@ npm run preview
 
 ## ディレクトリ概要
 
-- `src/App.tsx`: ルーレット画面のメイン UI
-- `src/data/members.ts`: 初期メンバー一覧
-- `src/types/domain.ts`: 将来拡張を見据えた基本型
+- `src/app/`: アプリの入口、全体設定、グローバルスタイル
+- `src/pages/`: 画面単位の構成
+- `src/features/`: ユーザー操作単位の機能
+- `src/entities/`: `Member` や `EventRecord` などのドメイン単位
+- `src/shared/`: 汎用 UI や共通関数の置き場として使う想定
 - `AGENTS.md`: Codex や開発時の作業ガイド
+
+## フロントエンドアーキテクチャ
+
+このプロジェクトでは、小規模から中規模まで保守しやすいように、`app / pages / features / entities / shared` を基本単位にします。
+
+- `app`: アプリ全体の入口と共通設定
+- `pages`: 画面単位で機能を組み合わせる層
+- `features`: ルーレットや履歴登録のような機能単位
+- `entities`: メンバーや開催記録のような業務データ単位
+- `shared`: 業務知識を持たない汎用部品や共通処理
+
+現在のルーレット機能は以下のように整理しています。
+
+- `src/features/roulette/components/`: 表示コンポーネント
+- `src/features/roulette/model/`: 状態管理や UI ロジック
+- `src/features/roulette/lib/`: 小さな補助関数や定数
+- `src/entities/member/`: メンバー型と初期データ
+- `src/entities/event-record/`: 履歴機能向けの型
 
 ## 今後の拡張方針
 
