@@ -35,6 +35,41 @@ npm run build
 npm run preview
 ```
 
+## コミットルール
+
+コミットメッセージは `gitmoji` を使います。
+コミットメッセージ本文は日本語で書きます。
+
+- 新機能追加: `✨`
+- ドキュメント更新: `📝`
+- 設定変更: `🔧`
+- リファクタリング: `♻️`
+- UI / スタイル調整: `💄`
+
+例:
+
+```bash
+✨ ルーレットフロントエンドを実装
+📝 README にアーキテクチャガイドを追記
+🔧 editorconfig とツール設定を追加
+```
+
+`gitmoji` をインストール済みであれば、hook を入れることで `git commit` 時に候補を選べます。
+
+```bash
+gitmoji -i
+```
+
+詳細: https://gitmoji.dev/
+
+## 開発ガイドライン
+
+- `app / pages / features / entities / shared` の責務を崩さない
+- `App` に画面ロジックを集約しない
+- TypeScript / JavaScript では、特別な理由がない限りアロー関数を使う
+- export する関数や hook には JSDoc を付ける
+- 変更後は可能な範囲で `npm run build` を実行して確認する
+
 ## ディレクトリ概要
 
 - `src/app/`: アプリの入口、全体設定、グローバルスタイル
