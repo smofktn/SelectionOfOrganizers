@@ -35,6 +35,38 @@ npm run build
 npm run preview
 ```
 
+## GitHub Pages へのデプロイ
+
+このリポジトリは `GitHub Actions` を使って `GitHub Pages` にデプロイできます。
+
+- 公開 URL: `https://smofktn.github.io/SelectionOfOrganizers/`
+- workflow 定義: `.github/workflows/deploy.yml`
+- `Vite` の `base`: `/SelectionOfOrganizers/`
+
+### なぜ `base` が必要か
+
+`Vite` の `base` は、ビルド後の JavaScript や CSS を「どの URL を基準に読み込むか」を決める設定です。
+
+GitHub Pages では、このアプリは `/` 直下ではなく `/SelectionOfOrganizers/` 配下で公開されます。
+そのため `base` を設定しないと、アセットを `/assets/...` と読みに行ってしまい、公開先で画面が正しく表示されないことがあります。
+
+### 初回セットアップ手順
+
+1. GitHub のリポジトリで `Settings > Pages` を開く
+2. `Build and deployment` の `Source` を `GitHub Actions` にする
+3. このリポジトリの `main` ブランチへ push する
+4. `Actions` タブで `Deploy to GitHub Pages` が成功することを確認する
+5. 上記の公開 URL にアクセスして動作確認する
+
+### ローカル確認
+
+```bash
+npm install
+npm run build
+```
+
+ビルドが通れば、Pages 用の静的ファイルは `dist/` に出力されます。
+
 ## コミットルール
 
 コミットメッセージは `gitmoji` を使います。
